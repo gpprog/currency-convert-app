@@ -24,7 +24,7 @@ const Selector = ({from,id,setToCurrency,setFromCurrency,token,currencies}) => {
     return (
 
 
-        <div className='selector' ref = {reference}>
+        <div ref = {reference}>
             <form className = { from ? `selector_form_base ${id}`:`selector_form_target`}>                            
                 <TextField 
                     className = 'selector-input'

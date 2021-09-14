@@ -1,16 +1,32 @@
 import { useEffect, useState } from 'react';
 import Selector from './Selector'
-import { Button, makeStyles,TextField} from '@material-ui/core';
+import { Button, Grid, makeStyles,TextField} from '@material-ui/core';
 import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
+import DeleteIcon from '@material-ui/icons/Delete';
 import axios from 'axios';
+import { Remove,CloseOutlined } from '@material-ui/icons';
 
 
 // use some styling for delete button
 const useStyles = makeStyles({
         
     btn: {
-    minWidth:40
+    minWidth:30,
+    width: 28
+    
+    },
+    input:{
+        width:'10rem',
+
+    },
+    converter:
+    {   opacity:1,
+        marginBottom:'5px',
+        
+       
+
     }
+    
   })
   
 
@@ -108,12 +124,33 @@ const Converter = (props) => {
 
     return (
 
-        <div className="converter-container">
-            <TextField margin = "dense" onChange={amountHandle} label="Amount" type='number' inputProps={{min:0}}></TextField>
-                <Selector from={true} fromCurrency = {fromCurrency} setFromCurrency= {setFromCurrency} token={token} currencies={currencies}  />
-                <Selector  toCurrency = {toCurrency} setToCurrency={setToCurrency} token ={token}  currencies={currencies}/>
-            <TextField margin = "dense"  value={converted ? converted : ''} label="Converted Amount" ></TextField>
-            <Button className = {classes.btn}  id ={id} variant = "contained" size="small" onClick={removeConverter} color="secondary"><RemoveCircleIcon id={id}/></Button>
+        <div className={classes.converter}>
+            <Grid container 
+                         
+                direction="row"
+                alignItems="flex-end"
+                justify="center">
+                
+                <Grid item >                    
+                   <TextField className={classes.input} onChange={amountHandle} label="Amount" type='number' inputProps={{min:0}}></TextField>
+                </Grid>
+                <Grid item>
+                    <Selector from={true} fromCurrency = {fromCurrency} setFromCurrency= {setFromCurrency} token={token} currencies={currencies}  />                    
+                </Grid>
+                <Grid item>                    
+                    <Selector  toCurrency = {toCurrency} setToCurrency={setToCurrency} token ={token}  currencies={currencies}/>
+                </Grid>
+                <Grid item></Grid>
+                <Grid item>                    
+                    <TextField className={classes.input} value={converted ? converted : ''} label="Converted Amount" ></TextField>
+                </Grid>
+                <Grid item>
+                    <Button className = {classes.btn}  id ={id} variant = "outline" size="small" onClick={removeConverter} ><CloseOutlined id={id}/></Button>                    
+                </Grid>
+
+            </Grid>     
+            
+            
         </div>
 
 

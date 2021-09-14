@@ -1,10 +1,11 @@
 import { useState } from "react";
 import axios from 'axios';
-import { Button,InputLabel,OutlinedInput,FormControl,Dialog,DialogActions,DialogContent,DialogContentText,DialogTitle} from "@material-ui/core";
+import { Button,InputLabel,OutlinedInput,FormControl,Dialog,DialogActions,DialogContent,DialogContentText,DialogTitle, makeStyles} from "@material-ui/core";
 import React from 'react';
 
 
 const AddRates = ({token,currencies,isGuest}) => {
+
 
   const [open, setOpen] = React.useState(false);
   const [newCurrency,setNewCurrency] = useState('');
@@ -16,6 +17,7 @@ const AddRates = ({token,currencies,isGuest}) => {
     setNewCurrency(newCurrency);
 
  }
+
 
  const handleRates = (e)=>{
 
@@ -53,31 +55,34 @@ const AddRates = ({token,currencies,isGuest}) => {
 
   const handleAdd = async (e) =>{
 
-        e.preventDefault();       
-        if (currencies.includes(newCurrency.toUpperCase())){    
+        e.preventDefault();
+        
+        
+        if (currencies.includes(newCurrency.toUpperCase())){ 
             window.alert("This currency is already in the database you can update or remove it using the proper form")
 
-        }
-        else{
-                if (newCurrency){
+        }else{
+                if (newCurrency){  
 
 
-                try{
-                    let headers = { headers: { 'auth-token': token}};    
-                    // let url = 'http://localhost:80/api/ratios/add';
-                    let url = 'https://inky-thirsty-clutch.glitch.me/api/ratios/add';
+                    try{
+                        let headers = { headers: { 'auth-token': token}};    
+                        // let url = 'http://localhost:80/api/ratios/add';
+                        let url = 'https://inky-thirsty-clutch.glitch.me/api/ratios/add';
 
-                    
-                    let body = { "base": newCurrency.toUpperCase(), "rates": rates };
-                    
-                    const add = await axios.post(url,body,headers);
-                    let response = add.data;
-                    window.alert(response)        
-                    setOpen(false);
-                }
-                catch(err){
-                    window.alert(err)
-                }
+                        
+                        let body = { "base": newCurrency.toUpperCase(), "rates": rates };
+                        
+                        const add = await axios.post(url,body,headers);
+                        let response = add.data;
+                        window.alert(response)
+                        setOpen(false);
+                        console.log("successfully added new currency")
+                        document.location.reload()
+                    }
+                    catch(err){
+                        window.alert(err)
+                    }
                 }
                 else{
                     window.alert('A base currency is required... ')
@@ -85,23 +90,48 @@ const AddRates = ({token,currencies,isGuest}) => {
 
         }
 }
-    const checkOrAdd=()=>{
+    const checkOrAdd=(e)=>{
         if (isGuest){
-            window.alert(loginMessage);            
+            
+            window.alert(loginMessage); 
         }
         else{
-            handleAdd()
+             handleAdd(e)
         }
     }
 
+    const useStyles = makeStyles((theme) => ({
+        root: {
+          flexGrow: 1,
+        },
+        paper: {
+          height: 140,
+          width: 100,
+        },
+        control: {
+          padding: theme.spacing(2),
+        },
+        button:{
+            fontSize:'1rem',    
+            width: 85,
+            margin:5,
+            backgroundColor: "#158574",
+            color: "white",
+            "&:hover" : {
+                backgroundColor: "#244f17",
+            },
+        }
+      }));
+    
+      const classes = useStyles()	  
 
 
     return (
 
-        <div className = "add-rates-container">
+        <>
 
-                <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-                   Add currencies
+                <Button className={classes.button} variant="contained"  onClick={handleClickOpen}>
+                   Add
                 </Button>
                 <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                     <DialogTitle id="form-dialog-title">Add currency and rates</DialogTitle>
@@ -140,7 +170,7 @@ const AddRates = ({token,currencies,isGuest}) => {
                     
                 </Dialog>
             
-        </div>
+        </>
 
 
 

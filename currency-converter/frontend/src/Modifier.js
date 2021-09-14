@@ -1,6 +1,6 @@
 import React,{ useState } from "react";
 import axios from 'axios';
-import { Button, Dialog,DialogActions,DialogContent,DialogContentText,DialogTitle} from "@material-ui/core";
+import { Button, Dialog,DialogActions,DialogContent,DialogContentText,DialogTitle, makeStyles} from "@material-ui/core";
 import Mode from './Mode';
 
 
@@ -81,15 +81,41 @@ const Modifier = ({token,currencies,isGuest}) => {
     
   };
 
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      flexGrow: 1,
+    },
+    paper: {
+      height: 140,
+      width: 100,
+    },
+    control: {
+      padding: theme.spacing(2),
+    },
+    button:{
+        fontSize:'1rem',
+        width: 85,
+        margin:5,
+        backgroundColor: "#158574",
+        "&:hover":{
+            backgroundColor: "#400080",
+
+        }
+    }
+  }));
+
+  const classes = useStyles();
+
+ 
 
 
     return (
 
-        <div className = "modifier-container">          
+        <>          
 
             <form>
-                <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-                    Update rates
+                <Button className = {classes.button} variant="contained" color="primary" onClick={handleClickOpen}>
+                    Update
                 </Button>
                 <Dialog open={open} onClose={handleClose}>
                     <DialogTitle id="form-dialog-title">Update Ratios</DialogTitle>
@@ -110,7 +136,7 @@ const Modifier = ({token,currencies,isGuest}) => {
                 </Dialog>
             </form>
 
-        </div>
+        </>
 
       );
 }

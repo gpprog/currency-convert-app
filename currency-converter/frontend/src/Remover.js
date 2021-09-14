@@ -1,11 +1,11 @@
-import {  useState ,isGuest} from "react";
+import {  useState } from "react";
 import axios from 'axios';
-import { Button, MenuItem, TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from "@material-ui/core";
+import { Button, MenuItem, TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, makeStyles } from "@material-ui/core";
 import React from 'react';
 
 
 
-const Remover = ({token,currencies}) => {
+const Remover = ({token,currencies,isGuest}) => {
 
 
   const [open, setOpen] = React.useState(false);
@@ -52,8 +52,10 @@ const Remover = ({token,currencies}) => {
     const remove = await axios.post(url,body,headers);
     let response = remove.data;
     window.alert(response);
-    setBase('')
+    setBase('')    
     setOpen(false);
+    document.location.reload()
+
     }
 
     else{
@@ -77,6 +79,26 @@ const Remover = ({token,currencies}) => {
 
   }
 
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      flexGrow: 1,
+    },
+    paper: {
+      height: 140,
+      width: 100,
+    },
+    control: {
+      padding: theme.spacing(2),
+    },
+    button:{
+        fontSize:'1rem',
+        width: 85,
+        margin:5,
+        backgroundColor: "#158574"
+    }
+  }));
+
+  const classes = useStyles()	  
 
 
 
@@ -86,10 +108,10 @@ const Remover = ({token,currencies}) => {
 
     return (
 
-        <div className = "remove-rates-container">
+        <>
 
-                <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-                    Delete currencies
+                <Button color = "secondary" className = {classes.button} variant="contained"  onClick={handleClickOpen}>
+                    Delete
                 </Button>
                 <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                     <DialogTitle id="form-dialog-title">Delete currency</DialogTitle>
@@ -109,7 +131,7 @@ const Remover = ({token,currencies}) => {
                             <Button onClick={handleClose} color="primary">
                                 Cancel
                             </Button>
-                            <Button onClick={checkOrRemove} color="primary">
+                            <Button onClick={()=>checkOrRemove(isGuest)} color="primary">
                                 Delete
                             </Button>
                         </DialogActions>
@@ -119,7 +141,7 @@ const Remover = ({token,currencies}) => {
                 
                 </Dialog>
             
-        </div>
+        </>
 
 
 

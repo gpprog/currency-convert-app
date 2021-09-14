@@ -1,4 +1,4 @@
-import { TextField,MenuItem, FormControl,OutlinedInput,InputLabel} from '@material-ui/core';
+import { TextField,MenuItem, FormControl,OutlinedInput,InputLabel, makeStyles} from '@material-ui/core';
 
 const Mode = ({currencies,callRates,callBase}) => {
 
@@ -34,8 +34,9 @@ const Mode = ({currencies,callRates,callBase}) => {
 
 
 
+
     return  (
-        <div className ="mode-container">
+        <>
             <form id = "mode-form"  autoComplete="off">               
 
                 <TextField  select variant = "outlined" defaultValue = ""
@@ -67,7 +68,7 @@ const Mode = ({currencies,callRates,callBase}) => {
 
             </form>
 
-        </div>
+        </>
         
 
 

@@ -1,4 +1,4 @@
-import  {TextField,Button}  from "@material-ui/core";
+import  {TextField,Button,Grid}  from "@material-ui/core";
 import axios from 'axios';
 import { useState } from "react";
 import {Link} from 'react-router-dom';
@@ -59,16 +59,18 @@ const Register = ({setToken}) => {
     }
 
     return (
-        <div className="login-container">
-            <h2>Register for full access</h2>
-            <form method="POST" onSubmit={handleRegister}  autoComplete="off">
-                <TextField required onChange = {handleName} fullWidth variant = "outlined" label = "Username" type = "text" className = "login-input"></TextField>
-                <TextField type="email" required onChange = {handleEmail} fullWidth variant = "outlined" label = "Email"></TextField>
-                <TextField  required onChange = {handlePass} fullWidth variant ="outlined" type = "password" label = "Password" className = "login-input"></TextField>
-                <Button fullWidth  type ="submit" id="login-button" variant = "contained"  className = "login-button">Register</Button> 
-                <p>Already a member ?</p><strong id = "register-text"> <Link to = "/">Login</Link></strong><ExitToAppIcon className="login-icon"/>
-            </form>
-        </div>
+        <Grid container className="login-container">
+            <Grid item xs={12} sm={9} md={6} lg={4} xl={4} >
+                <h2>Register for full access</h2>
+                <form method="POST" onSubmit={handleRegister}  autoComplete="off">
+                    <TextField required onChange = {handleName} fullWidth variant = "outlined" label = "Username" type = "text" className = "login-input"></TextField>
+                    <TextField type="email" required onChange = {handleEmail} fullWidth variant = "outlined" label = "Email"></TextField>
+                    <TextField  required onChange = {handlePass} fullWidth variant ="outlined" type = "password" label = "Password" className = "login-input"></TextField>
+                    <Button fullWidth  type ="submit" id="login-button" variant = "contained"  className = "login-button">Register</Button> 
+                    <p>Already a member ?</p><strong id = "register-text"> <Link to = "/">Login</Link></strong><ExitToAppIcon className="login-icon"/>
+                </form>
+            </Grid>
+        </Grid>
 
 
 

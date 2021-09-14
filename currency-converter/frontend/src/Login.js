@@ -1,8 +1,9 @@
-import  {Button,TextField}  from "@material-ui/core";
+import  {Button,TextField,Grid}  from "@material-ui/core";
 import axios from 'axios';
 import { useState } from "react";
 import {Link} from 'react-router-dom';
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
+
 
 
 const Login = ({setToken}) => {
@@ -79,23 +80,27 @@ const Login = ({setToken}) => {
     }
     
     return (
-        <div className="login-container">
-            <h2>Login</h2>
-            <form  method="POST" onSubmit={handleLogin} >
-                {/* <TextField required  onChange = {handleName}  fullWidth variant = "outlined" label = "Username" type = "text" className = "login-input" ></TextField> */}
-                <TextField  required onChange = {handleEmail} type="email" fullWidth variant = "outlined" label = "Email"  > </TextField>
-                <TextField  required onChange = {handlePass} fullWidth variant ="outlined" type = "password" label = "Password"  className = "login-input"></TextField>
-                <Button fullWidth  type ="submit" id="login-button" variant = "contained"  className = "login-button">login</Button> 
-                <p>Not a registered member?</p>
-                <Link to = "/register"><strong>Register here</strong></Link>
-                <span> or </span>
-                <span id = "guest-link" onClick={handleLogin} ><strong id ="guest">Visit as a Guest </strong>< PermIdentityIcon  className ="guest-icon"/></span>
+        <Grid container className="login-container">
+            <Grid item xs={12} sm={9} md={6} lg={4} xl={4}>
+                <h2>Login</h2>
+                <form  method="POST" onSubmit={handleLogin} >
+                   
+                    <TextField  required onChange = {handleEmail} type="email" fullWidth variant = "outlined" label = "Email"  > </TextField>
+                    <TextField  required onChange = {handlePass} fullWidth variant ="outlined" type = "password" label = "Password"  className = "login-input"></TextField>
+                    <Button fullWidth  type ="submit" id="login-button" variant = "contained"  className = "login-button">login</Button> 
+                    <p>Not a registered member?</p>
+                    <Link to = "/register"><strong>Register here</strong></Link>
+                    <span> or </span>
+                    <span id = "guest-link" onClick={handleLogin} ><strong id ="guest">Visit as a Guest </strong>< PermIdentityIcon  className ="guest-icon"/></span>
 
-            </form>
+                </form>
 
 
+            </Grid>
+            
 
-        </div>
+
+        </Grid>
 
 
 

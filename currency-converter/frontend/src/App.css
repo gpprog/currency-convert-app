@@ -1,232 +1,134 @@
-
-body,html{
-  height:100%;
+#root {
+  display: flex;
+  justify-content: center;
 }
 
-a{
+body {
+  background-image: url('./background.jpg');
+  background-size: cover;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+a {
   text-decoration: none;
 }
 
-a:visited{
-  color:black;
+a:visited {
+  color: black;
 }
 
-h3{
-  text-align:center;
-
-}
-
-
-h2{
-  color:crimson;
-}
-
-
-.selector-container{
-  
-  width:60%;
-  display: flex;
-  flex-direction: row;
-  flex: content;
-  justify-content:space-around;
-  margin-bottom: 5px;
-
-}
-
-.MuiOutlinedInput-root{
-  width:100px;
-  
-}
-
-.MuiOutlinedInput-input {
-  height:max-content;
-  padding: 13px 13px!important;
-}
-
-
-.App{
-  height:100vh;
-  margin-left:auto;
-  margin-right:auto;
-  background:rgba(217, 217, 231, 0.226);
-  box-sizing: border-box;
-}
-
-.App-header{
-  margin-left:auto;
-  margin-right:auto;
+h3 {
   text-align: center;
 }
 
-
-
-
-.login-input{
-
-  padding:5px;
-  margin:5px;
+h2 {
+  color: crimson;
 }
 
-.login-container{
-  
-  text-align:center;
+.MuiOutlinedInput-root {
+  width: 100px;
+}
+
+.App {
+  margin-top: 50px;
+  z-index: 1;
+  box-shadow: rgba(50, 92, 105, 0.582) 2px 5px;
+  margin-left: 200px;
+  margin-right: 200px;
+  border: 2px solid rgb(125, 139, 125);
+  width: 1000px;
+  height: auto;
+  background-color: rgba(230, 228, 214, 0.554);
+  margin-bottom: 50px;
+  border-radius: 20px;
+}
+
+.App-header {
+  z-index: 9999;
+  margin-top: 6rem;
+}
+
+.login-input {
+  padding: 5px;
+  margin: 5px;
+}
+
+.login-container {
+  text-align: center;
   margin-left: auto;
   margin-right: auto;
-  align-items:center;
+  align-items: center;
   flex-direction: column;
-  display:flex;
-  width:18rem;
-  
-}
-.login-container button{
-  margin-left: 5px; 
-}
-
-
-.login-input{
-  
-  margin:10px;
-}
-
-
-
-
-.MuiSvgIcon-root.guest-icon{
-  fill: currentColor;
-  width: 1em;
-  position: absolute;
-  height: 1em;
-  display: inline-block;
-  font-size: 1.5rem;
-  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  flex-shrink: 0;
-  user-select: none;
-  position: absolute;
-  margin-left: 4px;
-}
-.MuiSvgIcon-root.login-icon{
-  fill: currentColor;
-  width: 1em;
-  position: absolute;
-  height: 1em;
-  display: inline-block;
-  font-size: 1.5rem;
-  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  flex-shrink: 0;
-  user-select: none;
-  position: absolute;
-  margin-left: 4px;
-
-}
-
-#guest-link:hover{
-  
-  cursor: pointer;
-  
-}
-
-
-.buttons-container{
-  width: 121px;
   display: flex;
-  flex-direction: column;
-  align-items: stretch;
-
+  margin-bottom: 25px;
 }
 
-
-
-.MuiInputBase-input{
-  font: inherit;
-  color: currentColor;
-  width: 100%;
-  border: 0;
-  height: 1rem;
-  display: block;
-  padding: 7px 2px 2px;
-  height:40px;
-  background: none;
-  box-sizing: content-box;
-  animation-name: mui-auto-fill-cancel;
-  letter-spacing: inherit;
-  animation-duration: 10ms;
-  -webkit-tap-highlight-color: transparent;
-  margin:1px;
+.MuiSvgIcon-root.guest-icon {
+  fill: currentColor;
+  width: 1em;
+  position: absolute;
+  height: 1em;
+  display: inline-block;
+  font-size: 1.5rem;
+  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  flex-shrink: 0;
+  user-select: none;
+  position: absolute;
+  margin-left: 4px;
 }
-.converter-container{
-  margin-left: auto;
-  margin-right:auto;
-  padding:10px;
-  height:40px;
-  display:flex;
-  height:40px;
-  align-items: flex-end;
-  width:50%;
-
-
-}
-.MuiInputBase-root.MuiInput-root.MuiInput-underline.MuiInputBase-formControl.MuiInput-formControl{
-  height:40px;
-}
-.App-add-converter{
-  margin-left:15px !important;
-  margin-bottom: 5px! important;
+.MuiSvgIcon-root.login-icon {
+  fill: currentColor;
+  width: 1em;
+  position: absolute;
+  height: 1em;
+  display: inline-block;
+  font-size: 1.5rem;
+  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  flex-shrink: 0;
+  user-select: none;
+  position: absolute;
+  margin-left: 4px;
 }
 
-.MuiTextField-root{
-  height:40px;
+#guest-link:hover {
+  cursor: pointer;
 }
 
-#login-button{
-  margin-top:5px;
+.MuiInputBase-root.MuiInput-root.MuiInput-underline.MuiInputBase-formControl.MuiInput-formControl {
+  height: 40px;
 }
-#register-text{ 
+
+.MuiTextField-root {
+  height: 3rem;
+}
+
+#login-button {
+  margin-left: 5px;
+  margin-top: 10px;
+}
+#register-text {
   display: inline;
-  
 }
 
-.MuiButtonBase-root.MuiButton-root.MuiButton-contained.App-logout-button{
-  margin-left: 15px;
-  margin-bottom: 5px;
-
-}
-
-
-
-
-.MuiFormControl-root{
+.MuiFormControl-root {
   margin: 0.35rem !important;
-
 }
 
-.MuiButton-label{
+.MuiButton-label {
   font-stretch: semi-condensed;
 }
-.MuiSvgIcon-root{
-  margin-right:2px;
+.MuiSvgIcon-root {
+  margin-right: 2px;
 }
 
-
-.add-rates-container{
-  padding:1rem;
+.MuiListItem-root:hover {
+  background-color: rgb(144, 212, 190) !important;
 }
 
-.modifier-container{
-  padding:1rem;  
-}
-
-.remove-rates-container{
-  padding:1rem;
-}
-
-.crud-buttons-container{
-  display:flex;
-  justify-content:center;
-}
-
-#mode-form{
-  display:flex;
+#mode-form {
+  display: flex;
   flex-direction: row;
-  flex-wrap:wrap;
-
+  flex-wrap: wrap;
 }
